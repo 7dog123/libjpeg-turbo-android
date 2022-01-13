@@ -5,7 +5,7 @@ mkdir -v  build-armv7
 pushd build-armv7
 
 NDK_PATH=/usr/local/lib/android/sdk/ndk/23.1.7779620
-TOOLCHAIN=clang
+TOOLCHAIN={"gcc", "clang"}
 ANDROID_VERSION=21
 
 cmake -G"Unix Makefiles" \
