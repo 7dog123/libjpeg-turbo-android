@@ -1,0 +1,54 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: update ubuntu
+        run: |
+         sudo apt-get update
+         sudo apt-get -y full-upgrade
+      - name: clone libjpeg-turbo
+        run: git clone https://github.com/libjpeg-turbo/libjpeg-turbo libjpeg-turbo-android
+
+      - name: build libjpeg-turbo-android
+        run: |
+         # Set these variables to suit your needs
+         NDK_PATH={$ANDROID_NDK_LATEST_HOME}
+         TOOLCHAIN={"clang"}
+         ANDROID_VERSION={"21"}
+         cd libjpeg-turbo-android
+         ./Armv7.sh
+         ./Armv8.sh
+         ./x86-64.sh
+         ./x86.sh
+
+      - name: Compress build folder
+        run: |
+          tar -zcvf build.tar.gz libjpeg-turbo-android/build-*
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build.tar.gz
