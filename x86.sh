@@ -2,8 +2,7 @@
 
 mkdir -v build-x86
 
-pushd
-  cd build-x86
+pushd build-x86
 
 cmake -G"Unix Makefiles" \
   -DANDROID_ABI=x86 \

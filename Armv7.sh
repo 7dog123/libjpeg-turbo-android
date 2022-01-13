@@ -2,8 +2,7 @@
 
 mkdir -v  build-armv7
 
-pushd
-  cd build-armv7
+pushd build-armv7
 
 cmake -G"Unix Makefiles" \
   -DANDROID_ABI=armeabi-v7a \

@@ -2,8 +2,7 @@
 
 mkdir -v build-armv8
 
-pushd
-  cd build-armv8
+pushd build-armv8
 
 cmake -G"Unix Makefiles" \
   -DANDROID_ABI=arm64-v8a \
