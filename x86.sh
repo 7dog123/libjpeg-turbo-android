@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir build-x86
+mkdir -v build-x86
 
 pushd
   cd build-x86

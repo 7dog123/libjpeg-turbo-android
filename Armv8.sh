@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir build-armv8
+mkdir -v build-armv8
 
 pushd
   cd build-armv8
