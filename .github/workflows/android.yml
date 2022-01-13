@@ -34,10 +34,6 @@ jobs:
 
       - name: build libjpeg-turbo
         run: |
-         # Set these variables to suit your needs
-         NDK_PATH={/usr/local/lib/android/sdk/ndk/23.1.7779620}
-         TOOLCHAIN={"clang"}
-         ANDROID_VERSION={"21"}
          mv *sh libjpeg-turbo
          cd libjpeg-turbo
          ./Armv7.sh

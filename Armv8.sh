@@ -4,6 +4,10 @@ mkdir -v build-armv8
 
 pushd build-armv8
 
+NDK_PATH=/usr/local/lib/android/sdk/ndk/23.1.7779620
+TOOLCHAIN=clang
+ANDROID_VERSION=21
+
 cmake -G"Unix Makefiles" \
   -DANDROID_ABI=arm64-v8a \
   -DANDROID_ARM_MODE=arm \
