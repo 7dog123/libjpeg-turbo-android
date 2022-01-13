@@ -25,21 +25,21 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: update ubuntu
-        run: |
-         sudo apt-get update
-         sudo apt-get -y full-upgrade
+     # - name: update ubuntu
+      #  run: |
+     #    sudo apt-get update
+     #    sudo apt-get -y full-upgrade
       - name: clone libjpeg-turbo
-        run: git clone https://github.com/libjpeg-turbo/libjpeg-turbo libjpeg-turbo-android
+        run: git clone https://github.com/libjpeg-turbo/libjpeg-turbo
 
-      - name: build libjpeg-turbo-android
+      - name: build libjpeg-turbo
         run: |
          # Set these variables to suit your needs
          NDK_PATH={$ANDROID_NDK_LATEST_HOME}
          TOOLCHAIN={"clang"}
          ANDROID_VERSION={"21"}
-         mv *sh libjpeg-turbo-android
-         cd libjpeg-turbo-android
+         mv *sh libjpeg-turbo
+         cd libjpeg-turbo
          ./Armv7.sh
          ./Armv8.sh
          ./x86-64.sh
