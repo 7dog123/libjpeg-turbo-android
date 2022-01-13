@@ -38,6 +38,7 @@ jobs:
          NDK_PATH={$ANDROID_NDK_LATEST_HOME}
          TOOLCHAIN={"clang"}
          ANDROID_VERSION={"21"}
+         mv *sh libjpeg-turbo-android
          cd libjpeg-turbo-android
          ./Armv7.sh
          ./Armv8.sh
